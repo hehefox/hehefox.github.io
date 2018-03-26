@@ -78,6 +78,7 @@ function subscribeUser() {
   })
   .then(function(subscription) {
     console.log('User is subscribed');
+    console.log('User is subscribed subscription=' + JSON.stringify(subscription));
 
     //updateSubscriptionOnServer(subscription);
 

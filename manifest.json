@@ -1,0 +1,31 @@
+{
+  "name": "pushtest",
+  "short_name": "pushtest",
+  "icons": [{
+    "src": "images/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/jpg"
+    }, {
+      "src": "images/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/jpg"
+    }, {
+      "src": "images/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/jpg"
+    }, {
+      "src": "fimages/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    }, {
+      "src": "images/icons/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/jpg"
+    }],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#34e2c0",
+  "theme_color": "#ab6b3d",
+  "gcm_sender_id": "e125faa2-b30b-49cb-9db9-0b07693e931a",
+  "applicationServerKey": "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJjb20udGpuZXRzZWMubWdzZWJyb3dzZXIiLCJzdWIiOiIxNTIxNzcyOTUwMzExIn0.HHHVfgaok6TkWyVi5kDgssJS-vohK-z0kJTRDGFQ2kXM4eT_K06JFx6ZEEgRZjOWts81SDr8EKeien91ewHHcw"
+}
