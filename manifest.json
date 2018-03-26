@@ -26,6 +26,5 @@
   "display": "standalone",
   "background_color": "#34e2c0",
   "theme_color": "#ab6b3d",
-  "gcm_sender_id": "e125faa2-b30b-49cb-9db9-0b07693e931a",
-  "applicationServerKey": "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJjb20udGpuZXRzZWMubWdzZWJyb3dzZXIiLCJzdWIiOiIxNTIxNzcyOTUwMzExIn0.HHHVfgaok6TkWyVi5kDgssJS-vohK-z0kJTRDGFQ2kXM4eT_K06JFx6ZEEgRZjOWts81SDr8EKeien91ewHHcw"
+  "gcm_sender_id": "e125faa2-b30b-49cb-9db9-0b07693e931a"
 }

@@ -27,8 +27,8 @@ const applicationServerPublicKey = 'BCW6JPG-T7Jx0bYKMhAbL6j3DL3VTTib7dwvBjQ' +
 //const pushButton = document.querySelector('.js-push-btn');
 const pushButton = document.getElementById("sendpush");
 
-let isSubscribed = false;
-let swRegistration = null;
+//let isSubscribed = false;
+var swRegistration = null;
 
 function urlB64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -71,6 +71,7 @@ function urlB64ToUint8Array(base64String) {
 }*/
 
 function subscribeUser() {
+  console.log('subscribeUser clicked');
   const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
   swRegistration.pushManager.subscribe({
     userVisibleOnly: true,
