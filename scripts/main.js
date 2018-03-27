@@ -70,18 +70,34 @@ function urlB64ToUint8Array(base64String) {
   }
 }*/
 
+
+function updateSubscriptionOnServer(subscription) {
+    // TODO: Send subscription to application server
+
+/*    const subscriptionJson = document.querySelector('.js-subscription-json');
+    const subscriptionDetails =
+        document.querySelector('.js-subscription-details');
+
+    if (subscription) {
+        subscriptionJson.textContent = JSON.stringify(subscription);
+        subscriptionDetails.classList.remove('is-invisible');
+    } else {
+        subscriptionDetails.classList.add('is-invisible');
+    }*/
+    document.getElementById("pushmsg").innerHTML = JSON.stringify(subscription) + '<br>';
+}
+
 function subscribeUser() {
-  console.log('subscribeUser clicked');
+  pushButton.disabled = true;
   const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
   swRegistration.pushManager.subscribe({
     userVisibleOnly: true,
-    applicationServerKey: applicationServerKey
   })
   .then(function(subscription) {
     console.log('User is subscribed');
     console.log('User is subscribed subscription=' + JSON.stringify(subscription));
 
-    //updateSubscriptionOnServer(subscription);
+    updateSubscriptionOnServer(subscription);
 
     //isSubscribed = true;
 
@@ -89,8 +105,65 @@ function subscribeUser() {
   })
   .catch(function(err) {
     console.log('Failed to subscribe the user: ', err);
+      if (Notification.permission === 'denied') {
+          // The user denied the notification permission which
+          // means we failed to subscribe and the user will need
+          // to manually change the notification permission to
+          // subscribe to push messages
+          console.warn('Permission for Notifications was denied');
+          pushButton.disabled = true;
+      } else {
+          // A problem occurred with the subscription; common reasons
+          // include network errors, and lacking gcm_sender_id and/or
+          // gcm_user_visible_only in the manifest.
+          console.error('Unable to subscribe to push.', err);
+          pushButton.disabled = false;
+          pushButton.textContent = 'Enable Push Messages';
+      }
     //updateBtn();
   });
+}
+
+
+function subscribe() {
+    // Disable the button so it can't be changed while
+    // we process the permission request
+    //var pushButton = document.querySelector('.js-push-button');
+    pushButton.disabled = true;
+
+    navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
+        serviceWorkerRegistration.pushManager.subscribe({
+            userVisibleOnly: true,
+        }
+        )
+            .then(function(subscription) {
+                // The subscription was successful
+                //isPushEnabled = true;
+                pushButton.textContent = 'Disable Push Messages';
+                pushButton.disabled = false;
+
+                // TODO: Send the subscription.endpoint to your server
+                // and save it to send a push message at a later date
+                return sendSubscriptionToServer(subscription);
+            })
+            .catch(function(e) {
+                if (Notification.permission === 'denied') {
+                    // The user denied the notification permission which
+                    // means we failed to subscribe and the user will need
+                    // to manually change the notification permission to
+                    // subscribe to push messages
+                    console.warn('Permission for Notifications was denied');
+                    pushButton.disabled = true;
+                } else {
+                    // A problem occurred with the subscription; common reasons
+                    // include network errors, and lacking gcm_sender_id and/or
+                    // gcm_user_visible_only in the manifest.
+                    console.error('Unable to subscribe to push.', e);
+                    pushButton.disabled = false;
+                    pushButton.textContent = 'Enable Push Messages';
+                }
+            });
+    });
 }
 
 function initializeUI() {
@@ -102,6 +175,7 @@ function initializeUI() {
       subscribeUser();
     }*/
     subscribeUser();
+    //subscribe();
   });
 
   // Set the initial subscription value
