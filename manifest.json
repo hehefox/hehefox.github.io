@@ -26,5 +26,6 @@
   "display": "standalone",
   "background_color": "#34e2c0",
   "theme_color": "#ab6b3d",
-  "gcm_sender_id": "864aa58e-6efd-44a5-93a9-5bf35bd787f9"
+  //"gcm_sender_id": "864aa58e-6efd-44a5-93a9-5bf35bd787f9"
+  "gcm_sender_id": "gcmpushtest-61026"
 }
